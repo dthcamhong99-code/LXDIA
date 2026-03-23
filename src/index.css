@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  
+  --color-brand-navy: #0F172A;
+  --color-brand-indigo: #4F46E5;
+  --color-brand-violet: #7C3AED;
+  --color-brand-slate: #FFFFFF;
+}
+
+@layer base {
+  body {
+    @apply bg-white text-slate-900 font-sans antialiased transition-colors duration-300;
+  }
+  
+  .dark body {
+    @apply bg-[#000000] text-slate-100;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-white/20 dark:border-slate-800/50 shadow-xl shadow-slate-200/50 dark:shadow-none;
+  }
+  
+  .vibrant-gradient {
+    @apply bg-gradient-to-br from-[#3B82F6] via-[#06B6D4] to-[#10B981];
+  }
+  
+  .markdown-body h1 { @apply text-3xl font-extrabold mb-6 text-brand-navy dark:text-white tracking-tight; }
+  .markdown-body h2 { @apply text-2xl font-bold mb-4 mt-8 text-brand-navy dark:text-blue-400; }
+  .markdown-body p { @apply mb-5 leading-relaxed text-slate-700 dark:text-slate-300 text-lg; }
+  .markdown-body ul { @apply list-disc pl-6 mb-5 space-y-3; }
+  .markdown-body li { @apply text-slate-700 dark:text-slate-300 text-lg; }
+  .markdown-body strong { @apply font-bold text-brand-navy dark:text-blue-300; }
+  .markdown-body blockquote { @apply border-l-4 border-brand-indigo/30 dark:border-blue-500/30 pl-4 italic my-4 bg-indigo-50/30 dark:bg-blue-900/20 py-2 rounded-r-lg; }
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes rainbow-gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.text-rainbow {
+  @apply text-transparent bg-clip-text bg-gradient-to-r from-[#3B82F6] via-[#06B6D4] to-[#10B981] bg-[length:200%_auto];
+  animation: rainbow-gradient 5s linear infinite;
+}
